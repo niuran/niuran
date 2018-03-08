@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
-
+use Auth;
 use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('auth', ['except' => ['show', 'confirmEmail']]);
     }
 
     public function show(User $user)
@@ -40,5 +40,18 @@ class UsersController extends Controller
 
 	     $user->update($data);
 	     return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
+    }
+
+    public function confirmEmail($token)
+    {
+        $user = User::where('activation_token', $token)->firstOrFail();
+
+        $user->activated = true;
+        $user->activation_token = null;
+        $user->save();
+
+        Auth::login($user);
+        session()->flash('success', '恭喜你，激活成功！');
+        return redirect()->route('users.show', [$user]);
     }
 }

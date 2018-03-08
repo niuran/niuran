@@ -20,6 +20,15 @@
                         <hr>
                         <h4><strong>注册于</strong></h4>
                         <p>{{ $user->created_at->diffForHumans() }}</p>
+                        <hr>
+                        <h4><strong>邮箱状态</strong></h4>
+                        <p>
+                            @if($user->activated)
+                                <span style="color: green;">已激活</span>
+                            @else
+                                <span style="color: red;">未激活</span>
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>

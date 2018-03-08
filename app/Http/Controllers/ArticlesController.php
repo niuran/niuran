@@ -14,18 +14,18 @@ class ArticlesController extends Controller
       $this->middleware('auth', ['except' => ['index']]);
   }
 
-    public function index(Articles $article)
+    public function index(Article $article)
     {
         $articles = $article->where('userid', Auth::id())->orderBy('sort')->paginate(20);
         return view('articles.index', compact('articles'));
     }
 
-  public function create(Articles $article)
+  public function create(Article $article)
   {
     return view('articles.create_and_edit', compact('article'));
   }
 
-  public function store(ArticleRequest $request, Articles $article)
+  public function store(ArticleRequest $request, Article $article)
   {
         $article->fill($request->all());
         $article->content = json_encode($request->content);
@@ -33,13 +33,13 @@ class ArticlesController extends Controller
         return redirect()->route('articles.index')->with('message', '成功创建测试！');
   }
 
-  public function edit(Articles $article)
+  public function edit(Article $article)
   {
       $article->content = json_decode($article->content, true);
       return view('articles.create_and_edit', compact('article'));
   }
 
-  public function update(ArticleRequest $request, Articles $article)
+  public function update(ArticleRequest $request, Article $article)
   {
       $article->fill($request->all());
       $article->content = json_encode($request->content);
@@ -47,7 +47,7 @@ class ArticlesController extends Controller
       return redirect()->route('articles.index')->with('message', '更新成功！');
   }
 
-  public function destroy(Articles $article)
+  public function destroy(Article $article)
   {
     $article->delete();
 
