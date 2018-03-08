@@ -4,17 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Questions extends Model
+class Article extends Model
 {
     protected $fillable = [
-      'userid', 'type', 'title', 'content', 'answer', 'sort',
+      'userid', 'title', 'content', 'sort',
     ];
-
-    public function testpages()
-    {
-      return $this->belongsTo(Testpages::class);
-    }
-
+    
     public function user()
     {
       return $this->belongsTo(User::class);

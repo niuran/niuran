@@ -23,7 +23,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
               <li class="{{ active_class(if_route('root')) }}"><a href="{{ route('root')}}">首页</a></li>
-              <li class="{{ active_class(if_route('questions.index')) }}"><a href="{{ route('questions.index')}}">全部文章</a></li>
+        @auth
+              <li class="{{ active_class(if_route('articles.index')) }}"><a href="{{ route('articles.index')}}">全部文章</a></li>
+        @endauth
               <li class="{{ active_class(if_route('info')) }}"><a href="{{ route('info')}}">关于我</a></li>
             </ul>
 

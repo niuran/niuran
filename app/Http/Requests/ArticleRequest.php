@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
 
-class QuestionRequest extends FormRequest
+class ArticleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,6 @@ class QuestionRequest extends FormRequest
     public function rules()
     {//type', 'title', 'content', 'answer', 'sort
         return [
-            'type' => 'required',
             'title' => 'required|max:120',
             'content' => 'max:1000',
             'sort' => 'integer',

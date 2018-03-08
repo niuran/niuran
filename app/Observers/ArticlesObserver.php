@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\Models\Questions;
+use App\Models\Articles;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
 
-class QuestionsObserver
+class ArticlesObserver
 {
-    public function saving(Questions $question)
+    public function saving(Articles $question)
     {
     	dd($question);
 		$question->content = json_encode($question->content);

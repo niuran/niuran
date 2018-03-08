@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Article;
+use App\Http\Requests\ArticleRequest;
+use Auth;
+
+class ArticlesController extends Controller
+{
+  public function __construct()
+  {
+      $this->middleware('auth', ['except' => ['index']]);
+  }
+
+    public function index(Articles $article)
+    {
+        $articles = $article->where('userid', Auth::id())->orderBy('sort')->paginate(20);
+        return view('articles.index', compact('articles'));
+    }
+
+  public function create(Articles $article)
+  {
+    return view('articles.create_and_edit', compact('article'));
+  }
+
+  public function store(ArticleRequest $request, Articles $article)
+  {
+        $article->fill($request->all());
+        $article->content = json_encode($request->content);
+        $article->save();
+        return redirect()->route('articles.index')->with('message', '成功创建测试！');
+  }
+
+  public function edit(Articles $article)
+  {
+      $article->content = json_decode($article->content, true);
+      return view('articles.create_and_edit', compact('article'));
+  }
+
+  public function update(ArticleRequest $request, Articles $article)
+  {
+      $article->fill($request->all());
+      $article->content = json_encode($request->content);
+      $article->save();
+      return redirect()->route('articles.index')->with('message', '更新成功！');
+  }
+
+  public function destroy(Articles $article)
+  {
+    $article->delete();
+
+    return redirect()->route('articles.index')->with('message', '成功删除！');
+  }
+}
