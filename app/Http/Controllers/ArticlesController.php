@@ -28,21 +28,18 @@ class ArticlesController extends Controller
   public function store(ArticleRequest $request, Article $article)
   {
         $article->fill($request->all());
-        $article->content = json_encode($request->content);
         $article->save();
         return redirect()->route('articles.index')->with('message', '成功创建测试！');
   }
 
   public function edit(Article $article)
   {
-      $article->content = json_decode($article->content, true);
       return view('articles.create_and_edit', compact('article'));
   }
 
   public function update(ArticleRequest $request, Article $article)
   {
       $article->fill($request->all());
-      $article->content = json_encode($request->content);
       $article->save();
       return redirect()->route('articles.index')->with('message', '更新成功！');
   }

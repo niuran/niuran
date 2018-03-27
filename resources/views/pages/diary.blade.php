@@ -1,15 +1,18 @@
 @extends('layouts.app')
-@section('title', '首页')
+@section('title', 'myDiary')
 
 @section('meta-include')
 <meta name="apple-itunes-app" content="app-id=1357419968">
 @endsection
 
 @section('content')
-
+  
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<!-- <h2 class="text-center"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;最新文章</h2> -->
+		<h2 class="text-center"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;myDiary</h2>
+		<h5 class="text-right"><a href="{{ route('feedback') }}">反馈</a></h5>
+	</div>
+	<div class="panel-body">
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
@@ -50,17 +53,11 @@
 		    <span class="sr-only">Next</span>
 		  </a>
 		</div>
-	</div>
-	<div class="panel-body">
-		@foreach ($articles as $article)
-		<div>
-			<h4 class="text-center">{{ $article->title }}</h4>
-			<p>{{ $article->content }}</p>
-		</div>
-		@endforeach
 
-		<div style="margin-bottom: 16px; margin-left: 16px; margin-top: 16px;">
-			<a href="https://itunes.apple.com/cn/app/mydiary-personal-note-book/id1357419968?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg) no-repeat;width:135px;height:40px;background-size:contain;"></a>
+		<div class="row" style="margin-top: 30px;font-size: 15pt;">
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;将你的日记、笔记汇聚在一起。为你的笔记添加分类与标签，来快速查找。你可以设定每日的提醒，开启Face ID、Touch ID以保护你的隐私。将你不同设备上的的笔记同步到iCloud。
+			</p>
 		</div>
 	</div>
 </div>

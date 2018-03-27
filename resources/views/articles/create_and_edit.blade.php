@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="form-group" id="content">
-                        <textarea class="form-control" name="content" rows="6">{{ old('textanswer', $article->textanswer ) }}</textarea>
+                        <textarea class="form-control" name="content" rows="6">{{ old('content', $article->content ) }}</textarea>
                     </div>
 
                     <div class="form-group">

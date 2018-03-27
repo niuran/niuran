@@ -26,6 +26,7 @@
         @auth
               <li class="{{ active_class(if_route('articles.index')) }}"><a href="{{ route('articles.index')}}">全部文章</a></li>
         @endauth
+              <li class="{{ active_class(if_route('diary')) }}"><a href="{{ route('diary')}}">myDiary</a></li>
               <li class="{{ active_class(if_route('info')) }}"><a href="{{ route('info')}}">关于我</a></li>
             </ul>
 

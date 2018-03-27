@@ -2,6 +2,10 @@
 
 @section('title', '个人简介')
 
+@section('meta-include')
+<meta name="apple-itunes-app" content="app-id=1357419968">
+@endsection
+
 @section('content')
 
 <div class="row">
