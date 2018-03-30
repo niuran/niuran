@@ -15,10 +15,11 @@ use Illuminate\Http\Request;
 
 $api = app('Dingo\Api\Routing\Router');
 
-$api->version('v1', function($api) {
-    $api->get('version', function() {
-        return response('this is version v1');
-    });
+$api->version('v1', [
+	'namespace' => 'App\Http\Controllers\Api'
+], function($api) {
+    $api->post('testPosts', 'PostController@index')->name('api.testPosts');
+    $api->post('testGetPosts', 'PostController@get')->name('api.testGetPosts');
 });
 
 $api->version('v2', function($api) {

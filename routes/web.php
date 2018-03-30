@@ -22,4 +22,3 @@ Auth::routes();
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 Route::resource('articles', 'ArticlesController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
-Route::post('/posts', 'PostController@index')->name('posts');
