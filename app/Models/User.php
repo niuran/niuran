@@ -6,10 +6,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Notifications\ResetPassword;
+use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
 
     /**
