@@ -7,7 +7,8 @@
     @yield('meta-include')
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta name="keywords" content="牛苒,niuran,niuran.cn,diary,mydiary">
+    <meta name="description" content="牛苒的个人网站。">
     <title>@yield('title', 'niuran')</title>
 
     <!-- Styles -->
